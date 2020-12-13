@@ -12,8 +12,7 @@ import android.view.View;
 
 public class ClothesPrefFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
     ImageViewPreference imageViewPreference;
-    ImageViewPreference imageViewPreference_Fall;
-    ImageViewPreference imageViewPreference_Winter;
+
     private void setPreferenceSum(Preference p , Object v){
         String value = v.toString();
         String key = p.getKey();

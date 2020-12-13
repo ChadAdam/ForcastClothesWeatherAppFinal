@@ -116,7 +116,7 @@ public class ClothesActivity extends AppCompatActivity {
                     else{
                         temp2Compare = chilledTemp;
                     }
-                    Toast.makeText(getApplicationContext(), String.valueOf(temp2Compare), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(getApplicationContext(), String.valueOf(temp2Compare), Toast.LENGTH_SHORT).show();
                 }
                 else {Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();}
             }

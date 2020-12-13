@@ -50,8 +50,8 @@ public class ImagePreferenceActivity extends AppCompatActivity {
                 arms = preCheck(arms);
                 legs = preCheck(legs);
                 //------------
-                String results = String.valueOf(head)+String.valueOf(body)+String.valueOf(arms)+String.valueOf(legs);
-                Toast.makeText(getApplicationContext() , results , Toast.LENGTH_SHORT).show();
+                //String results = String.valueOf(head)+String.valueOf(body)+String.valueOf(arms)+String.valueOf(legs);
+                //Toast.makeText(getApplicationContext() , results , Toast.LENGTH_SHORT).show();
                 PreferenceUtils.setDefClothes(getApplicationContext(),head,body,arms,legs);
                 //test_image_preference_activity.super.onBackPressed();
                 //test_image_preference_activity.super.finish();
