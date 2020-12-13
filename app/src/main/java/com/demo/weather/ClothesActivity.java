@@ -42,6 +42,7 @@ public class ClothesActivity extends AppCompatActivity {
 
     FrameLayout mFrameLayout;
     TextView mDate_TV;
+    TextView mInfo_TV;
     private static double temp2Compare;
     private static final int ERROR_MATH_UTIL = -1000;
     @Override
@@ -71,6 +72,7 @@ public class ClothesActivity extends AppCompatActivity {
 
         mFrameLayout= (FrameLayout)  findViewById(R.id.root_view_head);
         mDate_TV = (TextView)  findViewById(R.id.date_figure_tv);
+        mInfo_TV = (TextView) findViewById(R.id.tv_info);
 
 
         String extra = getIntent().getStringExtra("Date");
@@ -147,13 +149,16 @@ public class ClothesActivity extends AppCompatActivity {
             switch (clothes_indicator.get(1)){
                 case 1:
                     mBody_Blue.setVisibility(View.VISIBLE); // Change this. More clothes should == blue
+                    mInfo_TV.setTextColor(getResources().getColor(R.color.blue));
                     break;
                 case 0:
                     mBody_Lite.setVisibility(View.INVISIBLE);
                     mBody_Blue.setVisibility(View.INVISIBLE);
+                    mInfo_TV.setTextColor(getResources().getColor(R.color.tan));
                     break;
                 case -1:
                     mBody_Lite.setVisibility(View.VISIBLE);
+                    mInfo_TV.setTextColor(getResources().getColor(R.color.light_red));
             }
 
             // Input arms

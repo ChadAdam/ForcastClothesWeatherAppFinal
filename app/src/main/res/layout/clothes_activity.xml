@@ -187,6 +187,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <TextView
+        android:id="@+id/tv_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -194,7 +195,7 @@
         app:layout_constraintTop_toTopOf="@id/guidline_image_outline2"
         android:text="Swipe Left to Change Weather Days"
         android:alpha="1"
-        android:textColor="#FBE796"
+        android:textColor="@color/tan"
         android:textSize="15sp"
         android:layout_marginLeft="55dp"
 

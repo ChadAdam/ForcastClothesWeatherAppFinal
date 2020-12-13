@@ -11,8 +11,10 @@
     <color name="colorAccent">#FFD740</color>
     <color name="colorPrimaryLight">#B3E5FC</color>
     <color name="white">#FFFFFF</color>
-    <color name="red">	#FF0000</color>
-
+    <color name="red">#FF0000</color>
+    <color name="blue">#2a9df4</color>
+    <color name="light_red">#FA8072</color>
+    <color name="tan">#FBE796</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#727272</color>
     <color name="detail_accent_pane_background">#455A64</color>

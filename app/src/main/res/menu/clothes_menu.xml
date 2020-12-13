@@ -5,7 +5,7 @@
     tools:context="com.demo.weather.ClothesActivity">
 
     <item android:id="@+id/clothes_action_settings"
-        android:title="Settings"
-        app:showAsAction="never" />
+        android:title="Choose Clothes"
+        app:showAsAction="always" />
 
 </menu>
