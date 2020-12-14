@@ -200,7 +200,7 @@ public class ClothesActivity extends AppCompatActivity {
         else {
 
             Toast.makeText(getApplicationContext(), "Clothes need to be set ", Toast.LENGTH_SHORT).show();
-            Intent i = new Intent(this , ClothesPrefActivity.class);
+            Intent i = new Intent(this , ImagePreferenceActivity.class);
             startActivity(i);
         }
         super.onPostResume();
@@ -223,7 +223,7 @@ public class ClothesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if(id ==R.id.clothes_action_settings){
-            Intent i = new Intent(this , ClothesPrefActivity.class);
+            Intent i = new Intent(this , ImagePreferenceActivity.class);
             i.putExtra("pref_date" , mDate_TV.getText());
 
             startActivity(i);

@@ -30,7 +30,6 @@ public class ClothesPrefFragment extends PreferenceFragmentCompat implements Sha
         //addPreferencesFromResource(R.xml.pref_clothes);
         setPreferencesFromResource(R.xml.pref_clothes, s);
         imageViewPreference = (ImageViewPreference) findPreference("image_preference");
-
         //imageViewPreference_Winter = (ImageViewPreference) findPreference("image_preference_Winter");
         if (imageViewPreference != null)
 
