@@ -271,11 +271,13 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     }
 
     private void onSwipeBottom() {
-        Toast.makeText(this, "Swipe Bottom", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Swipe Left: Return to Main Menu\n Swipe Right: Clothes Visualizer", Toast.LENGTH_LONG).show();
     }
 
     private void onSwipeLeft() {
-        Toast.makeText(this, "Swipe Left", Toast.LENGTH_LONG).show();
+        Context c = this;
+        Intent i = new Intent(c , MainActivity.class);
+        startActivity(i);
     }
 
     private void onSwipeRight() {

@@ -1,12 +1,15 @@
 package com.demo.weather;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,7 +20,7 @@ import com.demo.weather.utils.MathWeatherUtils;
 
 import java.util.ArrayList;
 
-public class ClothesActivity extends AppCompatActivity {
+public class ClothesActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
     ImageView mHead_Reg;
     ImageView mHead_Lite;
     ImageView mHead_Blue;
@@ -45,6 +48,7 @@ public class ClothesActivity extends AppCompatActivity {
     TextView mInfo_TV;
     private static double temp2Compare;
     private static final int ERROR_MATH_UTIL = -1000;
+    private GestureDetector gestureDetector;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,9 +100,9 @@ public class ClothesActivity extends AppCompatActivity {
             else{
                 temp2Compare = chilledTemp;
             }
-            Toast.makeText(getApplicationContext(), String.valueOf(temp2Compare), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), String.valueOf(temp2Compare), Toast.LENGTH_SHORT).show();
         }
-        else {Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();}
+        //else {Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();}
 
         mHead_Lite.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +122,7 @@ public class ClothesActivity extends AppCompatActivity {
                     }
                    // Toast.makeText(getApplicationContext(), String.valueOf(temp2Compare), Toast.LENGTH_SHORT).show();
                 }
-                else {Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();}
+               // else {Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();}
             }
         });
         mFrameLayout.setOnClickListener(new View.OnClickListener() {
@@ -127,11 +131,12 @@ public class ClothesActivity extends AppCompatActivity {
                 highlightClick();
             }
         });
+        gestureDetector = new GestureDetector(this);
     }
 
     @Override
     protected void onPostResume() {
-        Toast.makeText(this, "tem2compare = "+String.valueOf(temp2Compare), Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "tem2compare = "+String.valueOf(temp2Compare), Toast.LENGTH_LONG).show();
         ArrayList<Integer> clothes_indicator = MathWeatherUtils.getWeatherIntArr(getApplicationContext(), temp2Compare);
         if(clothes_indicator != null){
         //head
@@ -230,5 +235,87 @@ public class ClothesActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onDown(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public void onShowPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
+        return false;
+    }
+
+    @Override
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+        return false;
+    }
+
+    @Override
+    public void onLongPress(MotionEvent motionEvent) {
+
+    }
+
+    @Override
+    public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float vX, float vY) {
+        boolean result = false;
+        final int SWIPE_THRESHOLD = 100;
+        final int SWIPE_VELOCITY_THRESHOLD = 100;
+        float diffY = moveEvent.getY() - downEvent.getY();
+        float diffX = moveEvent.getX() - downEvent.getX();
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            // right or left swipe
+            if (Math.abs(diffX)> SWIPE_THRESHOLD && Math.abs(vX) > SWIPE_VELOCITY_THRESHOLD) {
+                if (diffX > 0) {
+                    onSwipeRight();
+                } else {
+                    onSwipeLeft();
+                }
+                result = true;
+            }
+        } else {
+            // up or down swipe
+            if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(vY)> SWIPE_VELOCITY_THRESHOLD) {
+                if (diffY > 0) {
+                    onSwipeBottom();
+                } else {
+                    onSwipeTop();
+                }
+                result = true;
+            }
+        }
+
+        return result;
+    }
+    private void onSwipeTop() {
+        //Toast.makeText(this, "Swipe Left: Return to Main Menu\n Swipe Right: Clothes Visualizer", Toast.LENGTH_LONG).show();
+    }
+
+    private void onSwipeBottom() {
+       // Toast.makeText(this, "Swipe Bottom", Toast.LENGTH_LONG).show();
+    }
+
+
+    private void onSwipeLeft() {
+        Context c = this;
+        Intent i = new Intent(c , MainActivity.class);
+        startActivity(i);
+
+    }
+
+    private void onSwipeRight() {
+
+
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 }
